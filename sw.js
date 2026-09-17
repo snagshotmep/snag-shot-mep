@@ -1,10 +1,15 @@
 // Snagshot MEP - offline shell.
 // Bump CACHE when index.html changes so phones pick up the new build.
-const CACHE = 'snagshot-v7';
+const CACHE = 'snagshot-v12';
 const SHELL = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'icon-180.png'];
+// The PDF worker is fetched only when a PDF plan is imported; warm it at install
+// so that import works on site with no signal.
+const WARM = ['https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/legacy/build/pdf.worker.min.js'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE)
+    .then(c => c.addAll(SHELL).then(() => Promise.all(WARM.map(u => c.add(u).catch(() => {})))))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
