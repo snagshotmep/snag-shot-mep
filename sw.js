@@ -1,6 +1,6 @@
 // Snagshot MEP - offline shell.
 // Bump CACHE when index.html changes so phones pick up the new build.
-const CACHE = 'snagshot-v12';
+const CACHE = 'snagshot-v13';
 const SHELL = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'icon-180.png'];
 // The PDF worker is fetched only when a PDF plan is imported; warm it at install
 // so that import works on site with no signal.
