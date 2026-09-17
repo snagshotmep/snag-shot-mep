@@ -18,7 +18,7 @@ engineer exports a ZIP.
 6. Go to **Settings -> Pages**. Under *Branch* pick `main` and `/ (root)`, then
    **Save**.
 7. Wait two or three minutes. The address appears at the top of that same page:
-   `https://<your-username>.github.io/snag-shot-mep/`
+   `https://snagshotmep.github.io/snag-shot-mep/`
 
 ## Installing it on a phone
 
